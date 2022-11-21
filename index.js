@@ -9,7 +9,9 @@ const Productsroute = require("./Routes/Productrouter");
 const cors = require("cors");
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin:"*"
+}));
 require("dotenv").config();
 // Note: added routes and end points
 app.use("/address", Address);
