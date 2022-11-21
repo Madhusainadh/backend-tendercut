@@ -12,6 +12,10 @@ app.use(express.json());
 app.use(cors({
   origin:"*"
 }));
+app.use((req, res, next) => {
+  res.header({"Access-Control-Allow-Origin": "*"});
+  next();
+}) 
 require("dotenv").config();
 // Note: added routes and end points
 app.use("/address", Address);
