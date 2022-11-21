@@ -10,6 +10,7 @@ const cors = require("cors");
 const app = express();
 app.use(express.json());
 app.use(cors());
+require("dotenv").config();
 // Note: added routes and end points
 app.use("/address", Address);
 app.use("/cart", Cartroute);
@@ -20,7 +21,6 @@ app.post("/login", async (req, res) => {
     res.status(500).send("invalid email or password");
   }
   const data = await AddressModel.findOne({ email, password, number });
-  
 
   if (!data) {
     res.status(404).send("no user found");
@@ -41,8 +41,6 @@ app.post("/getuser", async (req, res) => {
   }
 });
 mongoose
-  .connect(
-    "mongodb+srv://tendercuts:tendercuts@cluster0.hyunvkz.mongodb.net/TenderCutsMain"
-  )
+  .connect(process.env.MONGO_URL)
   .then(() => app.listen(8080, () => console.log("server satrted")))
   .catch((er) => console.log(er));
