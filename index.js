@@ -9,11 +9,15 @@ const Productsroute = require("./Routes/Productrouter");
 const cors = require("cors");
 const app = express();
 app.use(express.json());
-app.use(cors({
-  origin:'http://localhost:3000', 
-  credentials:true,            //access-control-allow-credentials:true
-  optionSuccessStatus:200
-}));
+const corsAllowedOrigin = ".localhost.";
+
+const corsOptions = {
+  origin: new RegExp(corsAllowedOrigin, "i") || true,
+  credentials: true, //access-control-allow-credentials:true
+  optionSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions)); 
 
 require("dotenv").config();
 // Note: added routes and end points
