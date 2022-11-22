@@ -9,7 +9,7 @@ const Productsroute = require("./Routes/Productrouter");
 const cors = require("cors");
 const app = express();
 app.use(express.json());
-const corsAllowedOrigin = "http://localhost:8080";
+const corsAllowedOrigin = "http://localhost:3000";
 
 const corsOptions = {
   origin: new RegExp(corsAllowedOrigin, "i") || true,
