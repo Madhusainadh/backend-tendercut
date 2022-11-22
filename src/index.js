@@ -1,11 +1,11 @@
 const express = require("express");
 const { default: mongoose } = require("mongoose");
-const Address = require("./Routes/Address.route");
-const AddressModel = require("./Schemas/Address");
-const cartModel = require("./Schemas/Cart.model");
-const ProdModel = require("./Schemas/Prods.model");
-const Cartroute = require("./Routes/Cart.route");
-const Productsroute = require("./Routes/Productrouter");
+const Address = require("../Routes/Address.route");
+const AddressModel = require("../Schemas/Address");
+const cartModel = require("../Schemas/Cart.model");
+const ProdModel = require("../Schemas/Prods.model");
+const Cartroute = require("../Routes/Cart.route");
+const Productsroute = require("../Routes/Productrouter");
 const cors = require("cors");
 const app = express();
 app.use(express.json());
