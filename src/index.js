@@ -17,6 +17,9 @@ const PORT = process.env.PORT || 8080;
 app.use("/address", Address);
 app.use("/cart", Cartroute);
 app.use("/products", Productsroute);
+app.get("/",(req,res)=>{
+  res.send("Home Page")
+})
 app.post("/login", async (req, res) => {
   const { email, password, number } = req.body;
   if (!email || !password || !number) {
