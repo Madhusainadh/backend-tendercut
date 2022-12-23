@@ -17,8 +17,8 @@ app.get("/", async (req, res) => {
       sortBy[sort[0]] = "desc";
     }
     let product = await Products.find({
-      // title: { $regex: search, $options : "i" },
-      type: { $regex: search, $options : "i" }
+      
+      type: { $regex: search, $options: "i" },
     }).sort(sortBy);
 
     res.send(product);
