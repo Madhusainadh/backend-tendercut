@@ -25,8 +25,12 @@ Address.post("/create", async (req, res) => {
     pincode,
     number,
   } = req.body;
-  let existingAddress = await AddressModel.findOne(email, number);
-  if (existingAddress) {
+  let existingnumber = await AddressModel.findOne({ number: number });
+  let existingEmail = await AddressModel.findOne({ email: email });
+
+  if (existingnumber || existingEmail) {
+    console.log("existingnumber:", existingnumber);
+    console.log("existingEmail:", existingEmail);
     res.status(401).send({ message: "User Already exists please Login" });
   } else {
     try {
@@ -40,6 +44,7 @@ Address.post("/create", async (req, res) => {
         flatNumber: flatNumber,
         landmark: landmark,
         pincode: pincode,
+        number: number,
       });
       res.send(add);
     } catch (error) {
